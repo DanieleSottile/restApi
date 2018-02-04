@@ -14,8 +14,10 @@ class CreateSuppliersTable extends Migration
     public function up()
     {
         Schema::create('mts_suppliers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('id')->unique();
+            $table->string('name', 100);
+            $table->string('comment');
+            $table->string('telephone', 20);
         });
     }
 

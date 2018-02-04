@@ -14,8 +14,20 @@ class CreateAddressesTable extends Migration
     public function up()
     {
         Schema::create('mts_addresses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('supplier_id')->unsigned();
+            //Label: "Billing address", "Office"
+            $table->string('label', 25);
+            //Street: "Rue d'Antibes", "Avenue Villermont"
+            $table->string('street', 100);
+            //Street Number: "2", "27b"
+            $table->string('street_number', 10);
+
+            $table->mediumInteger('zip_code')->unsigned();
+            $table->string('city', 50);
+            $table->string('country', 50);
+
+            //Defining foreign keys
+            $table->foreign('supplier_id')->references('id')->on('mts_suppliers');
         });
     }
 

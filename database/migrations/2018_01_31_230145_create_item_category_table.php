@@ -14,8 +14,12 @@ class CreateItemCategoryTable extends Migration
     public function up()
     {
         Schema::create('mts_item_category', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('item_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+            
+            //Defining foreign keys
+            $table->foreign('item_id')->references('id')->on('mts_items');
+            $table->foreign('category_id')->references('id')->on('mts_categories');
         });
     }
 

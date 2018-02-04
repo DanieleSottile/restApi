@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration
+class CreateItemTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mts_items', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->string('name', 100);
-            $table->string('description', 250);
-            $table->string('comment');
-            $table->string('barcode', 100);
+        Schema::create('mts_item_tag', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mts_items');
+        Schema::dropIfExists('mts_item_tag');
     }
 }
