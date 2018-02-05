@@ -14,8 +14,9 @@ class CreateFoodInformationTable extends Migration
     public function up()
     {
         Schema::create('mts_food_information', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->mediumIncrements('id');
+            //Label: "VEGAN", "GLUTEN-FREE", "VEGETARIAN", DAIRY, NUTS, MEAT ORIGIN
+            $table->string('label', 50);
         });
     }
 

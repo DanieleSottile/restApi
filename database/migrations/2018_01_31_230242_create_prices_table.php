@@ -14,18 +14,26 @@ class CreatePricesTable extends Migration
     public function up()
     {
         Schema::create('mts_prices', function (Blueprint $table) {
-            $table->integer('item_id')->unsigned();
-            $table->integer('supplier_id')->unsigned();
+            $table->unsignedMediumInteger('item_id');
+            $table->unsignedMediumInteger('supplier_id');
 
-            $table->double('price', 8, 2)->unsigned();
+            $table->unsignedDecimal('price', 8, 2);
             $table->char('currency', 3);
             //tinyInteger because there won't be many units of measurement
-            $table->tinyInteger('um_id')->unsigned();
+            $table->unsignedTinyInteger('um_id');
 
             //Defining foreign keys
-            $table->foreign('item_id')->references('id')->on('mts_items');
-            $table->foreign('supplier_id')->references('id')->on('mts_suppliers');
-            $table->foreign('um_id')->references('id')->on('mts_units_of_measurement');
+            $table->foreign('item_id')
+                  ->references('id')
+                  ->on('mts_items');
+
+            $table->foreign('supplier_id')
+                  ->references('id')
+                  ->on('mts_suppliers');
+
+            $table->foreign('um_id')
+                  ->references('id')
+                  ->on('mts_units_of_measurement');
         });
     }
 

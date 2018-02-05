@@ -18,6 +18,12 @@ class CreateCategoriesTable extends Migration
             //Label: Meat, drinks, vegetables, fish...
             $table->string('label', 50);
             $table->unsignedSmallInteger('parent_category_id')->nullable();
+
+            //Foreign keys
+            $table->foreign('parent_category_id')
+                  ->references('id')
+                  ->on('mts_categories')
+                  ->onDelete('set null');
         });
     }
 

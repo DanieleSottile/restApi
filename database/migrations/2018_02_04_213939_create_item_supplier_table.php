@@ -14,8 +14,8 @@ class CreateItemSupplierTable extends Migration
     public function up()
     {
         Schema::create('mts_item_supplier', function (Blueprint $table) {
-            $table->integer('item_id')->unsigned();
-            $table->integer('supplier_id')->unsigned();
+            $table->unsignedMediumInteger('item_id');
+            $table->unsignedMediumInteger('supplier_id');
             //This field is true if the supplier is the default one for a certain item
             $table->boolean('default');
             //The same supplier can't be the default one for the same item

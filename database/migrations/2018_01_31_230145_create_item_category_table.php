@@ -14,7 +14,7 @@ class CreateItemCategoryTable extends Migration
     public function up()
     {
         Schema::create('mts_item_category', function (Blueprint $table) {
-            $table->unsignedInteger('item_id');
+            $table->unsignedMediumInteger('item_id');
             $table->unsignedSmallInteger('category_id');
 
             //Primary Key

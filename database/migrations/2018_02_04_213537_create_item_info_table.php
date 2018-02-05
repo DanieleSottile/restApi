@@ -14,8 +14,8 @@ class CreateItemInfoTable extends Migration
     public function up()
     {
         Schema::create('mts_item_info', function (Blueprint $table) {
-            $table->integer('item_id')->unsigned();
-            $table->integer('information_id')->unsigned();
+            $table->unsignedMediumInteger('item_id');
+            $table->unsignedMediumInteger('information_id');
 
             $table->foreign('item_id')->references('id')->on('mts_items');
             $table->foreign('information_id')->references('id')->on('mts_food_information');
