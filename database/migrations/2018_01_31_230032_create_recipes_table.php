@@ -14,9 +14,9 @@ class CreateRecipesTable extends Migration
     public function up()
     {
         Schema::create('mts_recipes', function (Blueprint $table) {
-            $table->increments('id')->unique();
+            $table->increments('id');
             $table->string('title', 250);
-            $table->integer('serving_size')->unsigned();
+            $table->unsignedTinyInteger('serving_size');
             $table->timestamps();
         });
     }

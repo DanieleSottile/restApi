@@ -14,12 +14,20 @@ class CreateItemCategoryTable extends Migration
     public function up()
     {
         Schema::create('mts_item_category', function (Blueprint $table) {
-            $table->integer('item_id')->unsigned();
-            $table->integer('category_id')->unsigned();
-            
-            //Defining foreign keys
-            $table->foreign('item_id')->references('id')->on('mts_items');
-            $table->foreign('category_id')->references('id')->on('mts_categories');
+            $table->unsignedInteger('item_id');
+            $table->unsignedSmallInteger('category_id');
+
+            //Primary Key
+            $table->primary(['item_id', 'category_id']);
+
+            //Foreign keys
+            $table->foreign('item_id')
+                  ->references('id')->on('mts_items')
+                  ->onDelete('cascade');
+
+            $table->foreign('category_id')
+                  ->references('id')->on('mts_categories')
+                  ->onDelete('cascade');
         });
     }
 

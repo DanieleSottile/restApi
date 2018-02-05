@@ -14,8 +14,10 @@ class CreateCategoriesTable extends Migration
     public function up()
     {
         Schema::create('mts_categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->smallIncrements('id');
+            //Label: Meat, drinks, vegetables, fish...
+            $table->string('label', 50);
+            $table->unsignedSmallInteger('parent_category_id')->nullable();
         });
     }
 

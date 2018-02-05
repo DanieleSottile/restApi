@@ -22,7 +22,7 @@ class CreateAddressesTable extends Migration
             //Street Number: "2", "27b"
             $table->string('street_number', 10);
 
-            $table->mediumInteger('zip_code')->unsigned();
+            $table->string('postal_code', 8);
             $table->string('city', 50);
             $table->string('country', 50);
 
