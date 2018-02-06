@@ -14,7 +14,7 @@ class CreateAddressesTable extends Migration
     public function up()
     {
         Schema::create('mts_addresses', function (Blueprint $table) {
-            $table->integer('supplier_id')->unsigned();
+            $table->unsignedMediumInteger('supplier_id');
             //Label: "Billing address", "Office"
             $table->string('label', 25);
             //Street: "Rue d'Antibes", "Avenue Villermont"

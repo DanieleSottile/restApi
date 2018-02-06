@@ -23,10 +23,12 @@ class CreateItemCategoryTable extends Migration
             //Foreign keys
             $table->foreign('item_id')
                   ->references('id')->on('mts_items')
+                  ->onUpdate('cascade')
                   ->onDelete('cascade');
 
             $table->foreign('category_id')
                   ->references('id')->on('mts_categories')
+                  ->onUpdate('cascade')
                   ->onDelete('cascade');
         });
     }
