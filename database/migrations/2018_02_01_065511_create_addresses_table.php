@@ -15,7 +15,7 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('mts_addresses', function (Blueprint $table) {
             $table->unsignedMediumInteger('supplier_id');
-            //Label: "Billing address", "Office"
+            //Label: "Billing address", "Office", "Warehouse"
             $table->string('label', 25);
             //Street: "Rue d'Antibes", "Avenue Villermont"
             $table->string('street', 100);
@@ -25,6 +25,7 @@ class CreateAddressesTable extends Migration
             $table->string('postal_code', 8);
             $table->string('city', 50);
             $table->string('country', 50);
+            $table->string('details', 200)->nullable();
 
             //Defining foreign keys
             $table->foreign('supplier_id')->references('id')->on('mts_suppliers');
